@@ -1,0 +1,14 @@
+{
+  "name": "food-store",
+  "version": "0.0.0",
+  "description": "FoodStore",
+  "main": "server.js",
+  "author": {
+    "name": "unCry"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0"
+  }
+}

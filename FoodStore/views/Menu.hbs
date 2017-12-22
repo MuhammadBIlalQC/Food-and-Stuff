@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Give+You+Glory|Montserrat" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .navbar {
+            background-color: rgb(41,171,226);
+            margin: 0px;
+            border: none;
+        }
+
+        .nav a, .navbar-brand {
+            color: black !important;
+        }
+
+        .item {
+            /*border: 1px solid black;*/
+            position: relative;
+            width: 100%;
+            min-height: 200px;
+        }
+
+            /*
+        .item p {
+            position: absolute;
+            bottom: 15px;
+            left: 5px;
+            display: none;
+        } */
+
+            .item button {
+                position: absolute;
+                bottom: 25px;
+                right: 5px;
+                display: none;
+            }
+
+        #home-banner {
+            min-height: 400px;
+            background-color: rgb(0,169,157);
+            margin-top: 0px;
+            padding: 80px;
+            font-family: 'Give You Glory', cursive;
+            text-align: center;
+        }
+
+            #home-banner h1 {
+                font-size: 72px;
+            }
+
+            #home-banner p {
+                font-size: 36px;
+            }
+
+        #MenuFilters * {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Food and Stuff</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/Menu">Menu</a></li>
+                    <li><a href="#">Locations</a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Find Food!">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="width: 100%; margin-top: 100px;">
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4" style="">
+                <p style="height: 40px; font-size: 26px;" >Find Your Favorite Selections! </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container" style="width: 100%;">
+        <div class="row" style="padding-top: 120px;">
+            <div class="col-md-2" style="padding-left: 40px; height: 1600px;">
+                <h3>Filter Menu</h3> <br />
+                <ul id="MenuFilters" style="font-size: 16px; list-style: none; padding: 0">
+                    <li>
+                        <input type="checkbox" id="some_filter1" checked onchange="filterScript('Breakfast')"/> <label for="some_filter1" >Breakfast</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="some_filter2" checked onchange="filterScript('Lunch')"/> <label for="some_filter2">Lunch</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="some_filter3" checked onchange="filterScript('Dinner')"/> <label for="some_filter3">Dinner</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="some_filter4" checked onchange="filterScript('Dessert')" /> <label for="some_filter4">Dessert</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="some_filter5" checked onchange="filterScript('Beverage')"/> <label for="some_filter5">Beverage</label>
+                    </li>
+                </ul>
+            </div>
+            <div id="MenuContainer"></div>
+        </div>
+    </div>
+
+    <script src="/Scripts/ShoppingCart.js" type="text/babel">
+    </script>
+    <script src="/Scripts/Menu.js" type="text/babel">
+    </script>
+
+    <!--Filter Script-->
+    <script>
+        var filters = { Breakfast: true, Lunch: true, Dinner: true, Dessert: true, Beverage: true };
+        function filterScript(filter)
+        {
+            if (filters[filter] == true)
+            {
+                $('.jqueryItemSelectorClass').each(function () {
+                    if ($(this).hasClass(filter) == true)
+                        $(this).fadeOut();
+                });
+            }
+            else
+            {
+                $('.jqueryItemSelectorClass').each(function () {
+                    if ($(this).hasClass(filter) == true)
+                        $(this).fadeIn();
+                });
+            }
+            filters[filter] = !filters[filter];
+        }
+    </script>
+</body>
+</html>
