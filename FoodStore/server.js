@@ -65,6 +65,7 @@ app.get('/menu', (req, res) => res.render('Menu'));
 
 app.get('/repo', (req, res) => res.send(Repository));
 
+app.get('/locations', (req, res) => res.render('Locations'));
 app.get('/items/getAll', function (req, res) {
     res.cookie('shoppingCartItems', []);
     res.send(req.cookies);

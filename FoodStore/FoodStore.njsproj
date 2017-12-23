@@ -67,6 +67,7 @@
     <Content Include="Public\Images\F023.jpg" />
     <Content Include="Public\Images\F024.jpg" />
     <Content Include="Public\Images\F025.jpg" />
+    <Content Include="Public\Images\rhino.svg" />
     <Content Include="Public\Images\T001.jpg" />
     <Content Include="Public\Images\T002.jpg" />
     <Content Include="Public\Images\T003.jpg" />
@@ -82,6 +83,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\layouts\Main.hbs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\Locations.hbs">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\Menu.hbs">

@@ -101,67 +101,18 @@
         </div>
     </nav>
 
-    <div class="container" style="width: 100%; margin-top: 100px;">
+    <div class="container-fluid" style="margin-top: 120px;">
         <div class="row">
-            <div class="col-md-offset-4 col-md-4" style="">
-                <p style="height: 40px; font-size: 26px;" >Find Your Favorite Selections! </p>
+            <div class="col-md-offset-4 col-md-4">
+                <h1 style="text-align: center;">Error 404: Locations Not Found ... Maybe Someday!</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <img src="/images/rhino.svg" />
             </div>
         </div>
     </div>
 
-
-    <div class="container" style="width: 100%;">
-        <div class="row" style="padding-top: 120px;">
-            <div class="col-md-2" style="padding-left: 40px; height: 1600px;">
-                <h3>Filter Menu</h3> <br />
-                <ul id="MenuFilters" style="font-size: 16px; list-style: none; padding: 0">
-                    <li>
-                        <input type="checkbox" id="some_filter1" checked onchange="filterScript('Breakfast')"/> <label for="some_filter1" >Breakfast</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="some_filter2" checked onchange="filterScript('Lunch')"/> <label for="some_filter2">Lunch</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="some_filter3" checked onchange="filterScript('Dinner')"/> <label for="some_filter3">Dinner</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="some_filter4" checked onchange="filterScript('Dessert')" /> <label for="some_filter4">Dessert</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="some_filter5" checked onchange="filterScript('Beverage')"/> <label for="some_filter5">Beverage</label>
-                    </li>
-                </ul>
-            </div>
-            <div id="MenuContainer"></div>
-        </div>
-    </div>
-
-    <script src="/Scripts/ShoppingCart.js" type="text/babel">
-    </script>
-    <script src="/Scripts/Menu.js" type="text/babel">
-    </script>
-
-    <!--Filter Script-->
-    <script>
-        var filters = { Breakfast: true, Lunch: true, Dinner: true, Dessert: true, Beverage: true };
-        function filterScript(filter)
-        {
-            if (filters[filter] == true)
-            {
-                $('.jqueryItemSelectorClass').each(function () {
-                    if ($(this).hasClass(filter) == true)
-                        $(this).fadeOut();
-                });
-            }
-            else
-            {
-                $('.jqueryItemSelectorClass').each(function () {
-                    if ($(this).hasClass(filter) == true)
-                        $(this).fadeIn();
-                });
-            }
-            filters[filter] = !filters[filter];
-        }
-    </script>
 </body>
 </html>
