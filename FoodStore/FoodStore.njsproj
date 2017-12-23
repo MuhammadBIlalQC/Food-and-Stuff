@@ -37,6 +37,9 @@
     <Compile Include="Public\Scripts\Menu.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Public\Scripts\Navbar.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Public\Scripts\ShoppingCart.js">
       <SubType>Code</SubType>
     </Compile>
