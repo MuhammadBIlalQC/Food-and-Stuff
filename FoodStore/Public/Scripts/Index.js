@@ -71,13 +71,12 @@ class Item extends React.Component {
     {
         //this.minimizeShoppingCart();
         const superClass = this.props.superClass;
-        const cart = superClass.state.cartItems;
+        //const cart = superClass.state.cartItems;
         var item = $(e.target);
         item = item.is('div') ? item : item.parent();
-        cart.push(item.attr('id'));
-        superClass.setState({ cartItems: cart });
-
-        $.post('/items/add', { itemName: item.attr('id'), count: 1 }, data => console.log(data));
+        //cart.push(item.attr('id'));
+        //superClass.setState({ cartItems: cart });
+        $.post('/shoppingcart/add', { item: 'asdf', item2: null, FoodID: this.props.foodID }, data => console.log(data));
         this.setState({ button: <button className="btn btn-success"  > <span className="glyphicon glyphicon-ok"></span> Added </button>, added: true });
     }
 
@@ -118,10 +117,13 @@ class Collection extends React.Component {
         var featuredItems = [];
         const self = this;
         this.state = { /*featuredCollection: featuredCollection, */ cartItems: [] };
-        $.get('/repo', function (data) {
+        $.get('/items/get', function (data) {
             for (var i = 0; i < data.length; i++)
-                featuredItems.push({ name: data[i].name, img: data[i].FoodID + '.jpg', price: '10.00' });
-            var featuredCollection = featuredItems.map((elem, i) => <Item name={elem.name} imgSrc={elem.img} price={elem.price} offset={i == 0 ? '1' : (i % 4 == 0 ? '3' : null)} superClass={this} />);
+            {
+                console.log({ foodID: data[i].FoodID });
+                featuredItems.push({ name: data[i].name, img: data[i].FoodID + '.jpg', price: '10.00', foodID: data[i].FoodID });
+            }
+            var featuredCollection = featuredItems.map((elem, i) => <Item name={elem.name} imgSrc={elem.img} foodID={elem.foodID} price={elem.price} offset={i == 0 ? '1' : (i % 4 == 0 ? '3' : null)} superClass={this} />);
             self.setState({ featuredCollection: featuredCollection });
         });
         /*

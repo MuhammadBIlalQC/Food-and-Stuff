@@ -62,7 +62,7 @@ class Item extends React.Component {
         cart.push(item.attr('id'));
         superClass.setState({ cartItems: cart });
 
-        $.post('/items/add', { itemName: item.attr('id'), count: 1 }, data => console.log(data));
+        $.post('/shoppingcart/add', { itemName: item.attr('id'), count: 1 }, data => console.log(data));
         this.setState({ button: <button className="btn btn-success"  > <span className="glyphicon glyphicon-ok"></span> Added </button>, added: true });
     }
 
@@ -99,7 +99,7 @@ class Collection extends React.Component {
         var featuredItems = [];
         const self = this;
         this.state = { menu: [], cartItems: [] };
-        $.get('/repo', function (data) {
+        $.get('/items/get', function (data) {
             const menu = [];
             for (var i = 0; i < data.length; i++)
                 menu.push({ name: data[i].Name, img: data[i].FoodID + '.jpg', price: data[i].Price, type: data[i].Type, mealType: data[i].MealType });

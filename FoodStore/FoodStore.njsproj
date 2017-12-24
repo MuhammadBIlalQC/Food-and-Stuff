@@ -31,6 +31,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Data\Repository.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Public\Scripts\Index.js">
       <SubType>Code</SubType>
     </Compile>
@@ -96,6 +99,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Data\" />
     <Folder Include="Public\" />
     <Folder Include="Public\Images\" />
     <Folder Include="Public\Scripts\" />
