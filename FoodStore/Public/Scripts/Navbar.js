@@ -35,7 +35,7 @@ class Navbar extends React.Component {
                             <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span></button>
                         </form>
                         <ul className="nav navbar-nav navbar-right">
-                            <li><a href="#"><span className="glyphicon glyphicon-shopping-cart"></span> Cart </a></li>
+                            <li><a href="/checkout"><span className="glyphicon glyphicon-shopping-cart"></span> Cart </a></li>
                         </ul>
                     </div>
                 </div>

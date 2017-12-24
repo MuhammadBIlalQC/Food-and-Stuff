@@ -22,6 +22,7 @@ app.set('view engine', '.hbs');
 app.get('/', (req, res) => res.render('Index'));
 app.get('/menu', (req, res) => res.render('Menu'));
 app.get('/locations', (req, res) => res.render('Locations'));
+app.get('/checkout', (req, res) => res.render('Checkout'));
 /* End of Serving Static Pages */
 
 
@@ -38,9 +39,17 @@ app.get('/shoppingcart/get', function (req, res) {
     }
     else
     {
-        res.send(req.cookies.shoppingCartItems);
+        const shoppingCartItems = req.cookies.shoppingCartItems;
+
+        /*Item formatted for sending to get request as [ {Name, Price, Type, MealType, FoodID}, .....] */
+        const itemsFormatted = shoppingCartItems.map(elem => {
+            const item = RepositoryAsDict[elem];
+            item.FoodID = elem;
+            return item;
+        })
+        res.send(itemsFormatted);
     }
-})
+});
 
 
 app.post('/shoppingcart/add', function (req, res) {

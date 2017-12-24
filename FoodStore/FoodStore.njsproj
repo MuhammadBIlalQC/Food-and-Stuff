@@ -34,6 +34,9 @@
     <Compile Include="Data\Repository.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Public\Scripts\Checkout.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Public\Scripts\Index.js">
       <SubType>Code</SubType>
     </Compile>
@@ -85,6 +88,9 @@
     <Content Include="Public\Images\T009.jpg" />
     <Content Include="Public\Images\T010.jpg" />
     <Content Include="README.md" />
+    <Content Include="views\Checkout.hbs">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\Index.hbs">
       <SubType>Code</SubType>
     </Content>
