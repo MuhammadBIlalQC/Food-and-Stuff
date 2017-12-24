@@ -2,6 +2,14 @@
     constructor(props)
     {
         super(props);
+        this.removeItem = this.removeItem.bind(this);
+    }
+
+    removeItem(e)
+    {
+        $.post('/shoppingcart/delete', { FoodID: this.props.foodID},  data => {
+            location.reload();
+        });
     }
 
     render()
@@ -19,7 +27,7 @@
                 </div>
                 <div className="col-md-4" style={{}}>
                     <div>
-                        <button className="btn btn-danger">Remove</button>
+                        <button className="btn btn-danger" onClick={this.removeItem}>Remove</button>
                     </div>
                 </div>
             </div>
@@ -45,6 +53,15 @@ class Checkout extends React.Component {
             var noDisplay = data.length > 0 ? 'none' : 'block';
             this.setState({ items: items, subTotal: subTotal, display: display, noDisplay: noDisplay});
         });
+
+        this.checkout = this.checkout.bind(this);
+    }
+
+    checkout(e)
+    {
+        //alert('Since this is not an actual store, no payment process was set up. Going to delete all items in cart now...');
+        $.post('/shoppingcart/checkout', data => console.log(data));
+        location.reload();
     }
 
     render()
@@ -61,7 +78,7 @@ class Checkout extends React.Component {
                                 <h3 style={{ width: '120px' }}>Subtotal: <span style={{ position: 'absolute', right: '5px' }}>${this.state.subTotal}</span></h3>
                                 <h3 style={{ width: '120px' }}>Delivery: <span style={{ position: 'absolute', right: '5px' }}>${this.state.deliveryCost}</span></h3>
                                 <h3 style={{ width: '120px' }}>Total: <span style={{ position: 'absolute', right: '5px' }}>${this.state.subTotal + this.state.deliveryCost}</span></h3>
-                                <button className="btn btn-success" style={{ marginTop: '50px', }}>Continue to Checkout</button>
+                                <button className="btn btn-success" style={{ marginTop: '50px', }} onClick={this.checkout}>Continue to Checkout</button>
                          </div>
                     </div>
                 </div>

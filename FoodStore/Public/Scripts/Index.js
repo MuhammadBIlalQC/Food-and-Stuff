@@ -76,7 +76,7 @@ class Item extends React.Component {
         item = item.is('div') ? item : item.parent();
         //cart.push(item.attr('id'));
         //superClass.setState({ cartItems: cart });
-        $.post('/shoppingcart/add', { item: 'asdf', item2: null, FoodID: this.props.foodID }, data => console.log(data));
+        $.post('/shoppingcart/add', {FoodID: this.props.foodID }, data => console.log(data));
         this.setState({ button: <button className="btn btn-success"  > <span className="glyphicon glyphicon-ok"></span> Added </button>, added: true });
     }
 

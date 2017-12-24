@@ -76,6 +76,43 @@ app.post('/shoppingcart/add', function (req, res) {
     }
 });
 
+app.post('/shoppingcart/delete', function (req, res) {
+    try
+    {
+        const shoppingCartItems = req.cookies.shoppingCartItems;
+        const item = req.body.FoodID;
 
 
-app.listen(80);
+        if (item != null &&
+            shoppingCartItems != null && shoppingCartItems.length > 0)
+        {
+            /* Find the item in shopping cart. Swap the item with last item 
+                and then pop the array to delete item from shopping cart */
+            for (var i = 0; i < shoppingCartItems.length; i++)
+            {
+                if (shoppingCartItems[i] == item)
+                {
+                    const temp = shoppingCartItems[shoppingCartItems.length - 1];
+                    shoppingCartItems[i] = temp;
+                    shoppingCartItems.pop();
+                    res.cookie('shoppingCartItems', shoppingCartItems);
+                    break;
+                }
+            }
+            res.send('ok');
+        }
+    }
+    catch (e)
+    {
+        console.log(e);
+        res.send('failed');
+    }
+});
+
+app.post('/shoppingcart/checkout', function (req, res) {
+    res.cookie('shoppingCartItems', []);
+    res.send('ok');
+});
+
+
+app.listen(process.env.PORT || 8080);
